@@ -1,0 +1,12 @@
+<div class="am-accordion my-accordion">
+    {{#each items}}
+        <div class="am-accordion-item">
+            <div class="am-accordion-header" data-code="{{code}}" aria-expanded="false">
+                <i class="arrow"></i>{{name}}
+            </div>
+            <div class="am-accordion-content am-accordion-content-inactive" data-fetch="false" id="{{code}}">
+                <div class="am-accordion-content-box"></div>
+            </div>
+        </div>
+    {{/each}}
+</div>

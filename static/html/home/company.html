@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <link rel="import" href="../head.html?__inline">
+        <title>公司详情</title>
+        <!--SCRIPT_PLACEHOLDER-->
+    </head>
+    <body class="company_wrap">
+        <div class="swiper-container banner" id="swiper">
+		    <div class="swiper-wrapper"></div>
+		    <div class="swiper-pagination"></div>
+		</div>
+        <div class="comp_content" id="compContent"></div>
+        <div id="jdal" class="comp_top_title jdal_title">
+            <i class="comp_icon diamond_icon"></i>
+            <span>经典案例</span>
+            <i class="right_arrow"></i>
+        </div>
+
+        <div class="normal_title">图文详情</div>
+        <div id="description" class="p30 bg_fff"></div>
+
+        <link rel="import" href="../footer.html?__inline">
+        <script src="//api.map.baidu.com/api?v=2.0&ak=GtNrG008U04GONzKSDHiW70GxurUUhlU&s=1"></script>
+        <script>
+            require(['app/controller/home/Company']);
+        </script>
+    </body>
+</html>

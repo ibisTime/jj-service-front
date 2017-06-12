@@ -1,0 +1,27 @@
+<div class="comp_top_infos">
+    <div class="am-flexbox am-flexbox-justify-between am-flexbox-align-top">
+        <div class="comp_title">{{name}}</div>
+        <a class="am-button am-button-primary am-button-small am-button-inline">
+            <span>关注</span>
+        </a>
+    </div>
+    <div class="comp_infos clearfix">
+        <div class="comp_info">{{corporation}}</div>
+        <div class="comp_info">{{registeredCapital}}</div>
+        <div class="comp_info">{{priceRange}}</div>
+    </div>
+    <div class="comp_stars">
+        <span class="star_title">热门度</span>
+        <span class="stars">{{gzNum}}</span>
+    </div>
+</div>
+<div class="comp_top_title clearfix comp_top_dw" data-lng="{{longitude}}" data-lat="{{latitude}}">
+    <i class="comp_icon dw_icon"></i>
+    <span class="t-3dot">{{formatAddress province}}</span>
+    <i class="right_arrow"></i>
+</div>
+<a href="tel://{{mobile}}" class="comp_top_title block_a clearfix comp_top_tel">
+    <i class="comp_icon tel_icon"></i>
+    <span>{{mobile}}</span>
+    <i class="right_arrow"></i>
+</a>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <link rel="import" href="../head.html?__inline">
+        <title>资讯</title>
+        <!--SCRIPT_PLACEHOLDER-->
+    </head>
+    <body class="news_wrap">
+        <div class="wp100 bottom-scroll-wrapper" id="wrapper">
+            <div id="scroll">
+                <div id="pullDown" class="idle">
+                    <div class="pullDownLabel">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                        <div class="bounce4"></div>
+                    </div>
+                </div>
+
+                <div id="content" class="news_content"></div>
+                <div id="pullUp" class="idle">
+                    <div class="pullUpLabel">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                        <div class="bounce4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <link rel="import" href="../footer.html?__inline">
+        <script>
+            require(['app/controller/news/Index']);
+        </script>
+    </body>
+</html>

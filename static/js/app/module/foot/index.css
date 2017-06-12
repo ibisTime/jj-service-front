@@ -1,0 +1,38 @@
+.fixft {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 11;
+}
+
+.fixft.foot-fixed {
+    height: 0.98rem;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+}
+
+.foot-fixed a {
+    height: 100%;
+    font-size: 0.22rem;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.foot-fixed a div {
+    padding-top: 0.1rem;
+}
+
+.foot-fixed a img {
+    width: 0.4rem;
+    height: 0.4rem;
+}
+
+.foot-fixed a p {
+    line-height: 0.28rem;
+}
+
+.foot-fixed a.active p {
+    color: #ffa11b;
+}

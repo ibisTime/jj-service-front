@@ -1,0 +1,21 @@
+{{#each items}}
+    <div class="news-item">
+        <a href="./detail.html?code={{code}}" class="block_a">
+            <div class="news-item-top">
+                <div class="news-item-top-inner">
+                    <div class="news-title">{{title}}</div>
+                    <div class="news-item-infos clearfix">
+                        <div class="news-item-info">{{formateDate updateDatetime}}</div>
+                        <div class="news-item-info">{{sendPlatform}}</div>
+                        <div class="news-item-info">{{updater}}</div>
+                    </div>
+                    <div class="news-item-cont">{{format2line summary}}</div>
+                </div>
+            </div>
+            <div class="news-more">
+                <div class="news-more-inner">查看更多</div>
+            </div>
+            <i class="news-item-top-border"></i>
+        </a>
+    </div>
+{{/each}}
