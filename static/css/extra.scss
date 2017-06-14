@@ -15,6 +15,7 @@
     top: 0.88rem;
 }
 
+
 .bottom-scroll-wrapper {
     @extend %scrollWrap;
     top: 0;
@@ -991,4 +992,17 @@
     .user_top_title.comp_top_title {
         margin-bottom: 0;
     }
+}
+
+.search-wrapper{
+    top: .68rem;
+}
+.search-wrapper .index_wrap .index_content{
+    margin-top: 0;
+}
+.case-wrapper{
+    top: 0;
+}
+.case-wrapper .index_content{
+    margin-top: 0;
 }

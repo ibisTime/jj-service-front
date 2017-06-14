@@ -12,7 +12,8 @@ define([
     var companyTmpl = __inline('../ui/index_item.handlebars');
     var config = {
         start: 1,
-        limit: 10
+        limit: 10,
+        location: 1
     };
 
     init();

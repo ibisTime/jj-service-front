@@ -1,0 +1,19 @@
+{{#each items}}
+    <a href="../home/company.html?code={{company.code}}" class="block_a index_content_item">
+        <div class="am-flexbox am-flexbox-align-top">
+            <div class="item_img"><img src="{{formatListImage company.logo}}"></div>
+            <div class="item_content am-flexbox am-flexbox-justify-between am-flexbox-dir-column am-flexbox-align-top">
+                <div class="item_title t-3dot">{{company.name}}</div>
+                <div class="item_infos clearfix">
+                    <div class="item_info">{{company.corporation}}</div>
+                    <div class="item_info">{{company.registeredCapital}}</div>
+                    <div class="item_info">{{company.priceRange}}</div>
+                </div>
+                <div class="item_stars">
+                    <span class="star_title">热门度</span>
+                    <span class="stars">{{company.gzNum}}</span>
+                </div>
+            </div>
+        </div>
+    </a>
+{{/each}}

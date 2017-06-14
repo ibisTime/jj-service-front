@@ -12,7 +12,7 @@ define([
     // 初始化页面
     function init() {
         if(!companyCode){
-            base.showMsg("为传入公司编号");
+            base.showMsg("未传入公司编号");
             return;
         }
         base.showLoading();
@@ -87,7 +87,7 @@ define([
         });
         // 经典案例
         $("#jdal").on("click", function(){
-            location.href = `?code=${companyCode}`;
+            location.href = `./caseList.html?code=${companyCode}`;
         });
     }
 });

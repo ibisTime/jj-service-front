@@ -5,9 +5,9 @@ define([
     const serviceCtr = {
         // 分页查询入驻公司
         getPageCompany: (params, refresh) => {
-            params.orderColumn = params.orderColumn || "gzNum";
+            params.orderColumn = params.orderColumn || "gz_Num";
             params.orderDir = params.orderDir || "desc";
-            params.location = "1";
+            
             return Ajax.get('612060', params, refresh)
         },
         // 详情查询入驻公司
@@ -37,7 +37,11 @@ define([
                 groupCode,
                 userId: base.getUserId()
             }, refresh)
-        )
+        ),
+        // 分页查询公司资质
+        getPageList: (params, refresh) => {
+            return Ajax.get('612075', params, refresh)
+        },
     }
     return serviceCtr;
 });

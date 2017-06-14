@@ -546,3 +546,6 @@ textarea {
     word-wrap: break-word;
     word-break: break-all;
 }
+.b_e_b{
+	border-bottom: 1px solid #eee;
+}

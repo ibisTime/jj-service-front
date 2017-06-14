@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
-        <link rel="import" href="head.html?__inline">
+        <link rel="import" href="../head.html?__inline">
         <title>公共服务平台</title>
         <!--SCRIPT_PLACEHOLDER-->
     </head>
     <body class="index_wrap">
-        <div class="index_top am-flexbox am-flexbox-dir-column am-flexbox-align-middle">
+        <div class="index_top am-flexbox am-flexbox-dir-column am-flexbox-align-middle b_e_b">
             <div class="index_search am-flexbox-item am-flexbox ml0_i">
                 <div class="search_icon"><img src="../images/search.png"></div>
                 <div class="search_input_item am-flexbox-item">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="wp100 scroll-wrapper" id="wrapper">
+        <div class="wp100 scroll-wrapper search-wrapper" id="wrapper">
             <div id="scroll">
                 <div id="pullDown" class="idle">
                     <div class="pullDownLabel">
@@ -24,25 +24,6 @@
                         <div class="bounce4"></div>
                     </div>
                 </div>
-                <div class="swiper-container banner" id="swiper">
-    			    <div class="swiper-wrapper"></div>
-    			    <div class="swiper-pagination"></div>
-    			</div>
-                <div class="categary am-flexbox am-flexbox-justify-between">
-                    <div class="am-flexbox-item"><a href="home/list.html?qualifyType=2">
-                        <div><img src="../images/sheying.png"/></div>
-                        <div class="">摄影</div>
-                    </a></div>
-                    <div class="am-flexbox-item"><a href="home/list.html?qualifyType=1">
-                        <div><img src="../images/peixun.png"/></div>
-                        <div class="">培训</div>
-                    </a></div>
-                    <div class="am-flexbox-item"><a href="home/list.html?qualifyType=4">
-                        <div><img src="../images/yunying.png"/></div>
-                        <div class="">运营</div>
-                    </a></div>
-                </div>
-                <div class="news_notice am-flexbox" id="notice"></div>
                 <div id="content" class="index_content"></div>
                 <div id="pullUp" class="idle">
                     <div class="pullUpLabel">
@@ -55,9 +36,9 @@
             </div>
         </div>
 
-        <link rel="import" href="footer.html?__inline">
+        <link rel="import" href="../footer.html?__inline">
         <script>
-            require(['app/controller/Index']);
+            require(['app/controller/home/List']);
         </script>
     </body>
 </html>
