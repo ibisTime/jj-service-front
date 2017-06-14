@@ -32,7 +32,7 @@ define([
                 code: code,
                 json: json
             };
-            var cache_url = "/forward/api" + JSON.stringify(param);
+            var cache_url = "/api" + JSON.stringify(param);
             if (reload) {
                 delete cache[code];
             }
@@ -41,7 +41,7 @@ define([
                 param.json = JSON.stringify(json);
                 cache[code][cache_url] = $.ajax({
                     type: 'post',
-                    url: '/forward/api',
+                    url: '/api',
                     data: param
                 });
             }

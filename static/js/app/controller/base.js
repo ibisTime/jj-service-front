@@ -208,10 +208,10 @@ define([
             return !!CookieUtil.get("userId");
         },
         goLogin: function(){
-            loading.hideLoading();
-            sessionStorage.setItem("l-return", location.pathname + location.search);
-            // login.addCont().showCont();
-            location.href = "../user/redirect.html";
+//          loading.hideLoading();
+//          sessionStorage.setItem("l-return", location.pathname + location.search);
+//          // login.addCont().showCont();
+//          location.href = "../user/redirect.html";
         },
         getUserId: function() {
             return CookieUtil.get("userId");
