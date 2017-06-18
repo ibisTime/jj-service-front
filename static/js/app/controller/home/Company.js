@@ -1,12 +1,13 @@
 define([
     'app/controller/base',
+    'app/module/foot',
     'app/util/handlebarsHelpers',
     'app/interface/serviceCtr',
     'app/module/showInMap',
     'swiper'
-], function(base, Handlebars, serviceCtr, showInMap, Swiper) {
+], function(base, Foot, Handlebars, serviceCtr, showInMap, Swiper) {
     var companyTmpl = __inline('../../ui/home_company.handlebars');
-    var companyCode = base.getUrlParam("code"), groupCode;
+    var companyCode = base.getUrlParam("code"), groupCode,qfType;
 
     init();
     // 初始化页面
@@ -15,6 +16,7 @@ define([
             base.showMsg("未传入公司编号");
             return;
         }
+        Foot.addFoot(0);
         base.showLoading();
         getCompany(true)
             .then(() => base.hideLoading());
@@ -33,10 +35,29 @@ define([
             'pagination': '.swiper-pagination'
         });
     }
-    // 分页查询入驻公司
+    // 列表查询分组
+    function getGroupList(refresh){
+        return serviceCtr.getPageGroup({
+            start: 1,
+            limit: 10000
+        }, refresh)
+            .then((data) => {
+            	var html = "";
+                if(data.list.length){
+                    data.list.forEach(function(d, i){
+                    	html+='<li class="am-radio" data-code="'+d.code+'"><p class="fl">'+d.name+'</p><i class="fr"></i></li>'
+                    })
+                }
+                $("#grouping ul").html(html)
+                base.hideLoading();
+                $("#choseDialog").removeClass("hidden");
+            }, () => {});
+    }
+    // 公司详情
     function getCompany(){
         return serviceCtr.getCompany(companyCode)
             .then((data) => {
+            	qfType = data.qualifyType;
                 var bannerHtml = "";
                 var pics = base.getPicArr(data.pic);
                 pics.forEach((pic) => {
@@ -60,25 +81,62 @@ define([
     function addListener() {
         // 关注
         $("#compContent").on("click", ".am-button", function(){
-            var me = $(this),
-                focusCode = me.attr("data-code");
-            // 取消关注
+        	base.showLoading();
+        	
+        	var me = $(this),
+        	focusCode = me.attr("data-code");
+        	
+        	// 取消关注
             if(focusCode){
                 serviceCtr.unAttentionComp(focusCode)
                     .then(() => {
-                        me.attr("data-code", "").find("span").text("关注");
+                        $("#compContent .am-button").attr("data-code", "").find("span").text("关注");
+                        
+                    	base.hideLoading();
                     }).catch(() => {});
             }else{
-                serviceCtr.attentionComp({
-                    companyCode,
-                    groupCode: "Z201706120143522957"
-                }).then((data) => {
-                    me.attr("data-code", data.code).find("span").text("取消关注");
-                }).catch(() => {});
+        		//关注
+           		getGroupList();
             }
         })
+        
+        $("#grouping").on("click","ul li",function(){
+        	if($(this).hasClass("am-radio-active")){
+    			$(this).removeClass("am-radio-active");
+    		}else{
+    			$(this).siblings("li").removeClass("am-radio-active");
+    			$(this).addClass("am-radio-active");
+    		}
+        })
+        
+        //分组弹窗-取消
+        $("#cancel").click(function(){
+        	$("#choseDialog").addClass("hidden");
+        	$("#grouping ul").empty()
+        })
+        
+        //分组弹窗-确认
+        $("#confirm").click(function(){
+            var focusCode = $("#compContent .am-button").attr("data-code");
+            
+        	base.showLoading();
+        	
+            serviceCtr.attentionComp({
+                companyCode: companyCode,
+                groupCode: $(".am-radio-active").attr("data-code")
+            }, true).then((data) => {
+            	
+                $("#compContent .am-button").attr("data-code", data.code).find("span").text("取消关注");
+                
+                base.hideLoading();
+                $("#choseDialog").addClass("hidden");
+    			$("#grouping ul").empty();
+            }, () => {});
+        	
+        })
+        
         //显示地址
-        .on("click", ".comp_top_dw", function(){
+        $("#compContent").on("click", ".comp_top_dw", function(){
             var me = $(this);
             showInMap.addMap({
                 lng: me.attr("data-lng"),
@@ -87,7 +145,7 @@ define([
         });
         // 经典案例
         $("#jdal").on("click", function(){
-            location.href = `./caseList.html?code=${companyCode}`;
+            location.href = `./caseList.html?code=${companyCode}&qfType=${qfType}`;
         });
     }
 });

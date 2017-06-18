@@ -23,9 +23,21 @@ define([
 
     $.validator.setDefaults({
         errorPlacement: function(error, element) {
-            error.addClass("error-tip").insertAfter(element);
+            error
+                // .css({
+                //     position: "absolute",
+                //     "white-space": "nowrap",
+                //     right: "10px",
+                //     top: "0"
+                // })
+                .insertAfter(element);
         }
     });
+
+    $.validator.addMethod("bankCard", function(value, element) {
+        var reg = /^(\d{16}|\d{19})$/;
+        return this.optional(element) || reg.test(value);
+    }, "格式错误");
 
     $.validator.addMethod("isIdCardNo", function(value, element) {
         return this.optional(element) || isIdCardNo(value);

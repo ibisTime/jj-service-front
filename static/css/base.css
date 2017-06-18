@@ -104,6 +104,7 @@ section {
     margin: 0;
     padding: 0;
     border: 0;
+    outline: none;
 }
 
 body {
@@ -115,6 +116,11 @@ body {
     line-height: 150%;
     min-height: 100%;
     -webkit-overflow-scrolling: touch;
+}
+
+textarea,samp{
+    font-family: Microsoft YaHei, '宋体', Tahoma, Arial, sans-serif;
+    color: #484848;
 }
 
 .clearfix:after {
@@ -141,6 +147,9 @@ a:hover {
 
 a.disabled {
     color: #bdbdbd !important;
+}
+input:disabled{
+	background-color: transparent;
 }
 
 ul,
@@ -263,6 +272,9 @@ textarea {
 
 .t_fff {
     color: #fff;
+}
+.t_f14e4f {
+    color: #f14e4f;
 }
 
 /*text 文字对齐*/
@@ -432,6 +444,17 @@ textarea {
 .ab {
     position: absolute;
 }
+.ab_tr0 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ab_tl0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 /*display*/
 
@@ -546,6 +569,10 @@ textarea {
     word-wrap: break-word;
     word-break: break-all;
 }
+
+
 .b_e_b{
 	border-bottom: 1px solid #eee;
 }
+
+

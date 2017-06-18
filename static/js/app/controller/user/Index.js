@@ -3,8 +3,9 @@ define([
     'app/module/foot',
     'app/module/scroll',
     'app/interface/userCtr',
-    'app/interface/generalCtr'
-], function(base, Foot, scroll, userCtr, generalCtr) {
+    'app/interface/generalCtr',
+    'app/module/judgeBindMobile/judgeBindMobile',
+], function(base, Foot, scroll, userCtr, generalCtr,JudgeBindMobile) {
     var myScroll;
 
     init();
@@ -18,13 +19,31 @@ define([
         getIntentionAmount();
         getTel();
         addListener();
+        
+//      $("#demo").click(function(){
+//      	userCtr.getUserInfo(true)
+//                  .then(function(res) {
+//                      // 如果未绑定手机号，则绑定
+//                      if (!res.mobile) {
+//                          JudgeBindMobile.addCont({
+//                              avatar: res.userExt? res.userExt.photo:"",
+//                              nickname: res.nickname
+//                          }).showCont();
+//                      } else {
+////                          base.goBackUrl("/", true);
+//                      }
+//                  }, function(){
+////                      base.goBackUrl("/", true);
+//                  });
+//      })
+        
     }
     // 获取用户详情
     function getUser(refresh) {
         return userCtr.getUserInfo(refresh)
             .then(function(data) {
                 $("#nickname").html(data.nickname);
-                $("#avatar").attr("src", base.getAvatar(data.userExt.photo));
+                $("#avatar").attr("src", base.getAvatar(data.userExt?data.userExt.photo:""));
                 myScroll.refresh();
             }, () => myScroll.refresh());
     }

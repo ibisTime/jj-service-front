@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>关注</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body class="index_wrap attention_wrap">
+	<div class="wp100">
+		<div class="fs26 ptb20 plr30">分组名称
+		</div>
+		<div class="wp100 f20 lh200 ba bb re">
+			<input type="tel" placeholder="" id="name" class="fs28 plr30 wp100 ptb30">
+			
+			<div class="wp50 plr30 ab_tr0 pt17">
+				<input type="button" id="btn-editGrouping" class="ptb10 plr20 b_radius6 fs28 am-button-primary fr" value="保存" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="wp100">
+		<div class="fs26 ptb20 plr30">分组成员<span class="plr30" id="followNum"></span></div>
+		<div class="index_content company_wrap user_wrap mt0_i">
+		    <div class="comp_top_title jdal_title user_top_title">
+		        <div id="addFollow" class="block_a">
+		            <i class="comp_icon add_icon"></i>
+		            <span>添加企业</span>
+		        </div>
+		    </div>
+	    </div>
+	</div>
+	
+    <div class="index_content mt20">
+        <div id="content"></div>
+    </div>
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/attention/GroupingDetail']);
+    </script>
+</body>
+
+</html>

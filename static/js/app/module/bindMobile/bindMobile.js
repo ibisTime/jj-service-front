@@ -1,44 +1,54 @@
 define([
-    'jquery',
-    'app/module/validate',
-    'app/module/loading',
-    'app/interface/userCtr',
-    'app/module/smsCaptcha'
-], function ($, Validate, loading, userCtr, smsCaptcha) {
-    var tmpl = __inline("index.html");
+    'app/controller/base',
+    'app/util/cookie',
+    'app/module/validate/validate',
+    'app/module/loading/index',
+    'app/util/ajax',
+    'app/module/smsCaptcha/smsCaptcha'
+], function (base, CookieUtil, Validate, loading, Ajax, smsCaptcha) {
+    var tmpl = __inline("bindMobile.html");
+    var css = __inline("bindMobile.css");
     var defaultOpt = {};
-    var smsInstance;
     var first = true;
-
+    init();
+    function init(){
+        $("head").append('<style>'+css+'</style>');
+    }
     function bindMobile(){
         loading.createLoading("绑定中...");
-        userCtr.bindMobile({
+        Ajax.post("805153", {
             "mobile": $("#bind-mobile").val(),
-            "smsCaptcha": $("#bind-smsCaptcha").val()
-        }).then(function(res){
+            "smsCaptcha": $("#bind-smsCaptcha").val(),
+            "userId":  base.getUserId()
+        }, true).then(function(res){
             loading.hideLoading();
-            BMobile.hideCont(defaultOpt.success);
+            base.showMsg("绑定成功",1000);
+            setTimeout(function(){
+            	BMobile.hideMobileCont(defaultOpt.success);
+            },1200)
         }, function(){
-            smsInstance && smsInstance.clearTimer();
-            defaultOpt.error && defaultOpt.error(res.msg || "手机号绑定失败");
+            loading.hideLoading();
+            defaultOpt.error && defaultOpt.error("手机号绑定失败");
         });
     }
-
     var BMobile = {
-        addCont: function (option) {
+        addMobileCont: function (option) {
             option = option || {};
             defaultOpt = $.extend(defaultOpt, option);
-            if(!this.hasCont()){
+            if(!this.hasMobileCont()){
                 var temp = $(tmpl);
                 $("body").append(tmpl);
             }
             var wrap = $("#bindMobileWrap");
+            if(defaultOpt.hideBack){
+                $("#bind-mobile-back").css("display", "none");
+            }
             defaultOpt.title && wrap.find(".right-left-cont-title-name").html(defaultOpt.title);
             var that = this;
             if(first){
                 $("#bind-mobile-back")
                     .on("click", function(){
-                        BMobile.hideCont(defaultOpt.hideFn);
+                        BMobile.hideMobileCont(defaultOpt.hideFn);
                     });
                 wrap.find(".right-left-cont-title")
                     .on("touchmove", function(e){
@@ -60,9 +70,10 @@ define([
                             required: true,
                             mobile: true
                         }
-                    }
+                    },
+                    onkeyup: false
                 });
-                smsInstance = smsCaptcha.init({
+                smsCaptcha.init({
                     checkInfo: function () {
                         return $("#bind-mobile").valid();
                     },
@@ -75,13 +86,13 @@ define([
             first = false;
             return this;
         },
-        hasCont: function(){
+        hasMobileCont: function(){
             if(!$("#bindMobileWrap").length)
                 return false
             return true;
         },
-        showCont: function (){
-            if(this.hasCont()){
+        showMobileCont: function (){
+            if(this.hasMobileCont()){
                 var wrap = $("#bindMobileWrap");
                 wrap.css("top", $(window).scrollTop()+"px");
                 wrap.show().animate({
@@ -93,8 +104,8 @@ define([
             }
             return this;
         },
-        hideCont: function (func){
-            if(this.hasCont()){
+        hideMobileCont: function (func){
+            if(this.hasMobileCont()){
                 var wrap = $("#bindMobileWrap");
                 wrap.animate({
                     left: "100%"

@@ -26,7 +26,7 @@ define([
             reload = reload == undefined ? true : reload;
             json = json || {};
             json["systemCode"] = SYSTEM_CODE;
-            var token = CookieUtil.get("token");
+            var token =  sessionStorage.getItem("token");
             token && (json["token"] = token);
             var param = {
                 code: code,

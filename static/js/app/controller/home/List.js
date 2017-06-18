@@ -12,7 +12,7 @@ define([
     var companyTmpl = __inline('../../ui/home_list.handlebars');
     var config = {
     	qualifyType: qualifyType,
-    	status:'1',
+    	status:'2',
         start: 1,
         limit: 10
     };

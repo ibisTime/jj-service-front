@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <link rel="import" href="../head.html?__inline">
+        <title>公共服务平台</title>
+        <!--SCRIPT_PLACEHOLDER-->
+    </head>
+    <body class="index_wrap case-wrapper">
+		<div id="content" class="index_content"></div>
+		
+		<div class="mt20">
+			<form class="negForm bg_fff">
+				<div class="wp100 negForm-wrap ptb30 fs28 b_e_b">
+					<div class="negForm-txt ptb30 pl30">意向人</div>
+					<input type="text" id="name" disabled="" class="negForm-input wp100 pl180 pr30">
+				</div>
+				<div class="wp100 negForm-wrap ptb30 fs28 b_e_b">
+					<div class="negForm-txt ptb30 pl30">联系方式</div>
+					<input type="tel" id="mobile"  disabled=""  placeholder=""class="negForm-input wp100 pl180 pr30">
+				</div>
+				<div class="wp100 negForm-wrap ptb30 fs28 b_e_b">
+					<div class="negForm-txt ptb30 pl30">意向时间</div>
+					<input type="text" id="datetime" disabled="" class="negForm-input wp100 pl180 pr30">
+				</div>
+				<div class="wp100 negForm-wrap ptb30 fs28 b_e_b">
+					<div class="negForm-txt ptb30 pl30">意向状态</div>
+					<input type="text" id="status" disabled="" class="negForm-input wp100 pl180 pr30">
+				</div>
+				<div class="wp100 negForm-wrap ptb30 fs28">
+					<div class="negForm-txt ptb30 pl30">意向描述</div>
+					<textarea placeholder="" id="hzContent" class="negForm-textarea wp100 pl180 pr30 fs28"></textarea>
+				</div>
+			</form>
+			
+		</div>
+        <link rel="import" href="../footer.html?__inline">
+        <script>
+            require(['app/controller/user/NegotiateDetail']);
+        </script>
+    </body>
+</html>

@@ -384,17 +384,16 @@
     -webkit-background-clip: padding-box;
     color: #000;
     background-color: #fff;
-    border: 1px solid #ddd;
 }
 
 .am-button-primary {
     color: #fff;
     background-color: #ffa11b;
-    border: 1px solid #ffa11b;
 }
 
-.am-button-primary:hover:not(.am-button-disabled) {
-    background-color: #ef9516;
+.am-button-red {
+    color: #fff;
+    background-color: #F14E4F;
 }
 
 .am-button-inline {
@@ -432,11 +431,22 @@
     background: #ffa11b;
 }
 // other
-
-.fs22 {
+.fs24 {
+    font-size: 0.24rem;
+}
+.fs26 {
+    font-size: 0.26rem;
+}
+.fs28 {
     font-size: 0.28rem;
 }
+.fs30 {
+    font-size: 0.30rem;
+}
 
+.p20 {
+    padding: 0.2rem;
+}
 .p30 {
     padding: 0.3rem;
 }
@@ -444,7 +454,12 @@
 .pt10 {
     padding-top: 0.1rem;
 }
-
+.pt15 {
+    padding-top: 0.15rem;
+}
+.pt17 {
+    padding-top: 0.17rem;
+}
 .pt20 {
     padding-top: 0.2rem;
 }
@@ -456,6 +471,37 @@
 .pt40 {
     padding-top: 0.4rem;
 }
+.pl30 {
+    padding-left: 0.3rem;
+}
+.pl150 {
+    padding-left: 1.5rem;
+}
+.pl180 {
+    padding-left: 1.8rem;
+}
+.pr30 {
+    padding-right: 0.3rem;
+}
+.plr10 {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+.plr10_i {
+    padding-left: 0.1rem !important;
+    padding-right: 0.1rem !important;
+}
+
+.pl0r10_i {
+    padding-left: 0 !important;
+    padding-right: 0.1rem !important;
+}
+
+.plr20 {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+}
 
 .plr30 {
     padding-left: 0.3rem;
@@ -466,13 +512,56 @@
     padding-bottom: 0.1rem;
 }
 
+.ptb10 {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
+.ptb20 {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.ptb30 {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.ptb40 {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
 .mt20 {
     margin-top: 0.2rem;
 }
 
+.mt40 {
+    margin-top: 0.4rem;
+}
+
+.mt60 {
+    margin-top: 0.6rem;
+}
+
+.mt100 {
+    margin-top: 1rem;
+}
+
+.ml10 {
+    margin-left: 0.1rem;
+}
+
+.ml30 {
+    margin-left: 0.3rem;
+}
+
+.mt0_i {
+    margin-top: 0 !important;
+}
 .ml0_i {
     margin-left: 0 !important;
 }
+
 
 .block_a {
     display: block;
@@ -659,6 +748,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                z-index: 99;
 
                 &:after {
                     display: block;
@@ -717,7 +807,7 @@
 
 .company_wrap {
     .banner {
-        height: 3rem;
+        height: 4.8rem;
     }
 
     .comp_content {
@@ -817,7 +907,15 @@
         .setting_icon {
             background-image: url("../images/setting.png");
         }
-
+        
+        .grouping_icon {
+            background-image: url("../images/grouping.png");
+        }
+        
+        .add_icon {
+            background-image: url("../images/add.png");
+        }
+        
         .right_arrow {
             float: right;
             width: 0.15rem;
@@ -1005,4 +1103,183 @@
 }
 .case-wrapper .index_content{
     margin-top: 0;
+}
+.grouping_wrap  .index_content{
+    margin-top: 0;
+}
+.al_delBtn{
+    width: 50px;
+    height: 0.9rem;;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    background-color: #F14E4F;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.36rem;
+    background-image: url("../images/gdel.png");
+}
+#GroupingNum{
+    font-style: normal;
+    color: #808080;
+    margin-right: .2rem;
+}
+#btn-addFollow{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+}
+.hook{
+    display:inline-block;
+    width:0;
+    height:100%;
+    overflow:hidden;
+    margin-left:-1px;
+    font-size:0;
+    line-height:0;
+    vertical-align:middle;
+}
+.am-radio i{
+    display: inline-block;
+    width: .36rem;
+    height: .36rem;
+    border-radius: 50%;
+    border: 1px solid #808080;
+    vertical-align: middle;
+}
+.am-radio-active i{
+    background-color: #ffa11b;
+    border: 1px solid #ffa11b;
+}
+.negForm-wrap{
+    position: relative;
+}
+.negForm-txt{
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.negForm-textarea{
+    line-height: 1.5;
+    height: 2rem;
+}
+
+//弹窗
+.am-modal-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.am-modal-wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.am-modal {
+    position: relative;
+    width: 88%;
+    height: auto;
+}
+
+.am-modal-content {
+    position: relative;
+    background-color: #fff;
+    border: 0;
+    background-clip: padding-box;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.am-modal.am-modal-operation .am-modal-content {
+    border-radius: 4px;
+    height: auto;
+    padding-top: 0;
+}
+.am-modal-head{
+    border-bottom: 1px solid #eee;
+}
+.am-modal-title{
+    text-align: left;
+    padding: .2rem .3rem;
+    font-size: .28rem;
+    
+}
+
+.am-modal-body {
+    font-size: .28rem;
+    color: #484848;
+    height: 100%;
+    max-height: 5rem;
+    overflow: auto;
+}
+
+.am-modal.am-modal-operation .am-modal-content .am-modal-body {
+    padding: 0;
+}
+.am-modal-button-group-v {
+    text-align: center;
+    padding: .2rem 0 .22rem;
+}
+.am-modal-button-group-v .am-modal-button {
+    -webkit-touch-callout: none;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    font-size: .26rem;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 4px;
+    width: 32%;
+    padding: .15rem 0 ;
+}
+.am-modal-button-group-v .am-modal-button-co{
+    background-color: #ffa11b;
+}
+.am-modal-button-group-v .am-modal-button-ca{
+    margin-left: .4rem;
+    background-color: #ccc;
+}
+.am-grouping{
+    padding: .1rem 0;
+}
+.am-grouping ul li{
+    overflow: hidden;
+    padding: .2rem .3rem;
+}
+.am-grouping ul li p{
+    font-size: .28rem;
+}
+.am-grouping ul li.am-radio i{
+    width: .32rem;
+    height: .32rem;
 }

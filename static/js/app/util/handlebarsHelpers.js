@@ -1,6 +1,7 @@
 define([
-    'Handlebars'
-], function(Handlebars) {
+    'Handlebars',
+    'app/util/ajax'
+], function( Handlebars, Ajax) {
     Handlebars.registerHelper('formatMoney', function(num, options){
         if(!num && num !== 0)
             return "--";
@@ -48,6 +49,9 @@ define([
     Handlebars.registerHelper('formateDate', function(date, options){
         return date ? new Date(date).format("yyyy-MM-dd") : "--";
     });
+    Handlebars.registerHelper('formateCNDate', function(date, options){
+        return date ? new Date(date).format("yyyy年MM月dd日") : "--";
+    });
     Handlebars.registerHelper('formatePointDate', function(date, options){
         return date ? new Date(date).format("yyyy.MM.dd") : "--";
     });
@@ -76,6 +80,7 @@ define([
                 : cont
             : "";
     });
+    
 
     return Handlebars;
 });

@@ -1,0 +1,20 @@
+{{#each items}}
+    <div class="block_a index_content_item">
+		<div class="wp10 fl hp100 am-radio" data-code="{{code}}"><i></i><samp class="hook"></samp></div>
+        <div class="am-flexbox am-flexbox-align-top fr wp90">
+            <div class="item_img"><img src="{{formatListImage company.logo}}"></div>
+            <div class="item_content am-flexbox am-flexbox-justify-between am-flexbox-dir-column am-flexbox-align-top">
+                <div class="item_title t-3dot">{{company.name}}</div>
+                <div class="item_infos clearfix">
+                    <div class="item_info pl0r10_i">{{company.corporation}}</div>
+                    <div class="item_info plr10_i">{{company.registeredCapital}}</div>
+                    <div class="item_info plr10_i">{{company.priceRange}}</div>
+                </div>
+                <div class="item_stars">
+                    <span class="star_title">热门度</span>
+                    <span class="stars">{{company.gzNum}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/each}}

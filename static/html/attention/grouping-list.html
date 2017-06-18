@@ -16,25 +16,18 @@
             </div>
         </div>
    </div>
-    <div class="index_content company_wrap user_wrap">
-	    <div class="comp_top_title jdal_title user_top_title">
-	        <a href="./grouping.html" class="block_a">
-	            <i class="comp_icon grouping_icon"></i>
-	            <span>我的分组</span>
-	            <i class="right_arrow"></i>
-	            <i class="fr" id="GroupingNum"></i>
-	        </a>
-	    </div>
-    </div>
     
-    <div class="wp100 p30 fs26">关注列表<span class="plr30" id="followNum"></span></div>
-    <div class="index_content mt0_i">
+    <div class="index_content">
         <div id="content"></div>
     </div>
-
+	
+	<div style="height: 1rem;"></div>
+	<div class="wp100 mt100">
+		<input type="button" id="btn-addFollow" class="wp100 ptb20 fs28 am-button-primary" value="确定" />
+	</div>
     <link rel="import" href="../footer.html?__inline">
     <script>
-        require(['app/controller/attention/Index']);
+        require(['app/controller/attention/GroupingList']);
     </script>
 </body>
 

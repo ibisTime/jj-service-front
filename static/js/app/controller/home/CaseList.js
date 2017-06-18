@@ -4,18 +4,29 @@ define([
     'app/module/scroll',
     'app/util/handlebarsHelpers',
     'app/interface/serviceCtr',
-    'app/interface/generalCtr',
     'swiper'
-], function(base, Foot, scroll, Handlebars, serviceCtr, generalCtr, Swiper) {
+], function(base, Foot, scroll, Handlebars, serviceCtr, Swiper) {
     var myScroll, isEnd = false, isLoading = false;
-    var code = base.getUrlParam("code");
+    var companyCode = base.getUrlParam("code");
+    var qfType = base.getUrlParam("qfType");
+    var pageCode ;
     var companyTmpl = __inline('../../ui/case_list.handlebars');
     var config = {
-    	qualifyType: qualifyType,
+    	companyCode: companyCode,
     	status:'1',
         start: 1,
         limit: 10
     };
+	
+	if(qfType=="2"){//摄影
+		pageCode="612086"
+	}else if(qfType=="1"){//培训
+		pageCode="612096"
+	}else if(qfType=="4"){//运营
+		pageCode="612116"
+	}else{//服务
+		pageCode="612140"
+	}
 	
     init();
     // 初始化页面
@@ -32,25 +43,25 @@ define([
     // 初始化数据
     function getInitData() {
     	return $.when(
-			getPageCompany(true)
+			getPageCase(true)
         );
     }
     // 初始化iscroll
     function initIScroll(){
         myScroll = scroll.getInstance().getNormalScroll({
-        	loadMore: getPageCompany,
+        	loadMore: getPageCase,
             refresh: () => {
                 getInitData();
             }
         });
     }
     // 分页查询入驻公司
-    function getPageCompany(refresh){
+    function getPageCase(refresh){
     	if(!isLoading && (!isEnd || refresh) ){
             isLoading = true;
             base.showPullUp();
             config.start = refresh && 1 || config.start;
-            return serviceCtr.getPageCompany(config, refresh)
+            return serviceCtr.getPageCase(pageCode, config, refresh)
                 .then((data) => {
                     if(data.list.length){
                         var {list} = data;
@@ -76,6 +87,12 @@ define([
     }
 
     function addListener() {
-
+		$("#content").on("click",".caseList",function(){
+			
+			var code=$(this).attr("data-code");
+				
+			location.href = `./caseDetail.html?code=${code}&qfType=${qfType}`;
+			
+		})
     }
 });

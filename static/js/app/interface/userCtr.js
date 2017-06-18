@@ -56,6 +56,10 @@ define([
         getUserInfo: (refresh) => (
             Ajax.get("805056", {userId: base.getUserId()}, refresh)
         ),
+        // 根据userId获取用户详情
+        getUserIdDetail: (userId,refresh) => (
+            Ajax.get("805256", {userId: userId}, refresh)
+        ),
         // 获取用户账户信息
         getUserAccount: (refresh) => (
             Ajax.get("802503", {

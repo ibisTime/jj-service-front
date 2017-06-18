@@ -3,8 +3,8 @@ define([
     'app/util/cookie',
     'app/util/dialog',
     'app/module/loading',
-    // 'app/module/login'
-], function($, CookieUtil, dialog, loading, login) {
+    'app/util/ajax',
+], function($, CookieUtil, dialog, loading, Ajax) {
 	var userMobile;
 
     if (Number.prototype.toFixed) {
@@ -65,6 +65,9 @@ define([
         formatDate: function(date, format){
             return date ? new Date(date).format(format) : "--";
         },
+        formateDateTime: function(date){
+	        return date ? new Date(date).format("yyyy-MM-dd hh:mm:ss") : "--";
+	    },
         getUrlParam: function(name, locat) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
             var r = (locat || window.location.search).substr(1).match(reg);
@@ -164,6 +167,12 @@ define([
             }
             return Base.getPic(pic, suffix);
         },
+        getPicList: function(pic){
+	        if(!pic)
+	            return "";
+	        pic = pic.split(/\|\|/)[0];
+	        return (PIC_PREFIX + pic + '?imageMogr2/auto-orient/thumbnail/!123x100r');
+	    },
         getDomain: function() {
             return location.origin;
         },
@@ -205,28 +214,28 @@ define([
             window.history.back();
         },
         isLogin: function() {
-            return !!CookieUtil.get("userId");
+            return !!sessionStorage.getItem("userId");
         },
         goLogin: function(){
-//          loading.hideLoading();
-//          sessionStorage.setItem("l-return", location.pathname + location.search);
-//          // login.addCont().showCont();
-//          location.href = "../user/redirect.html";
+            loading.hideLoading();
+            sessionStorage.setItem("l-return", location.pathname + location.search);
+            // login.addCont().showCont();
+            location.href = "../user/redirect.html";
         },
         getUserId: function() {
-            return CookieUtil.get("userId");
+            return sessionStorage.getItem("userId");
         },
         getToken: function() {
-            return CookieUtil.get("token");
+            return sessionStorage.getItem("token");
         },
         setSessionUser: function(data, isSession) {
-            CookieUtil.set("userId", data.userId, isSession);
-            CookieUtil.set("token", data.token, isSession);
+            sessionStorage.setItem("userId", data.userId);
+            sessionStorage.setItem("token", data.token);
         },
         //清除cookie中和用户相关的数据
         clearSessionUser: function() {
-            CookieUtil.del("userId");
-            CookieUtil.del("token");
+            sessionStorage.removeItem("userId");
+            sessionStorage.removeItem("token");
         },
         //登出
         logout: function() {
@@ -275,7 +284,19 @@ define([
         },
         hideLoading: function(){
             loading.hideLoading();
-        }
+        },
+        getDictList: function(code,type){
+            return Ajax.get(code, {
+                parentKey: type
+            });
+        },
+        getDictListValue: function(dkey,arrayData){//类型
+			for(var i = 0 ; i < arrayData.length; i++ ){
+				if(dkey == arrayData[i].dkey){
+					return arrayData[i].dvalue;
+				}
+			}
+		},
     };
     // 判断是否登录
     if(!/\/redirect\.html/.test(location.href)){

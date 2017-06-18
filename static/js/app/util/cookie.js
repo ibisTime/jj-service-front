@@ -1,14 +1,15 @@
 define([], function() {
 	var cookieUtil = {
 		set: function(name, value, expires) {
-			var expr = "";
-	        if(!expires){
-	            var Days = 30;
-	    		var exp = new Date();
-	    		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-	            expr = ";expires=" + exp.toGMTString()
-	        }
-			document.cookie = name + "=" + escape(value) + expr + ";path=/;";
+//			var expr = "";
+//	        if(!expires){
+//	            var Days = 30;
+//	    		var exp = new Date();
+//	    		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+//	            expr = ";expires=" + exp.toGMTString()
+//	        }
+//			document.cookie = name + "=" + escape(value) + expr + ";path=/;";
+			document.cookie = name + "=" + escape(value) + ";path=/;";
 		},
 
 		get: function(name) {

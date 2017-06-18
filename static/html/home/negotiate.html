@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <link rel="import" href="../head.html?__inline">
+        <title>公共服务平台</title>
+        <!--SCRIPT_PLACEHOLDER-->
+    </head>
+    <body class="index_wrap case-wrapper">
+		<div id="content" class="index_content"></div>
+		
+		<div class="mt20">
+			<form class="negForm bg_fff">
+				<div class="wp100 negForm-wrap ptb30 fs28">
+					<div class="negForm-txt ptb30 pl30">意向人</div>
+					<input type="text" id="name" class="negForm-input wp100 pl180 pr30">
+				</div>
+				<div class="wp100 negForm-wrap ptb30 fs28">
+					<div class="negForm-txt ptb30 pl30">联系方式</div>
+					<input type="number" pattern="[0-9]*" placeholder="请输入联系方式" id="mobile" class="negForm-input wp100 pl180 pr30">
+				</div>
+				<div class="wp100 negForm-wrap ptb30 fs28">
+					<div class="negForm-txt ptb30 pl30">意向描述</div>
+					<textarea placeholder="请输入意向描述" id="hzContent" class="negForm-textarea wp100 pl180 pr30 fs28"></textarea>
+				</div>
+			</form>
+			
+			<div class="wp100 plr30 mt100">
+				<input type="button" id="btn-sub" class="wp100 ptb20 b_radius6 fs28 am-button-primary" value="提交" />
+			</div>
+		</div>
+        <link rel="import" href="../footer.html?__inline">
+        <script>
+            require(['app/controller/home/Negotiate']);
+        </script>
+    </body>
+</html>
