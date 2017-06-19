@@ -24,14 +24,10 @@ define([
 //      	userCtr.getUserInfo(true)
 //                  .then(function(res) {
 //                      // 如果未绑定手机号，则绑定
-//                      if (!res.mobile) {
 //                          JudgeBindMobile.addCont({
 //                              avatar: res.userExt? res.userExt.photo:"",
 //                              nickname: res.nickname
 //                          }).showCont();
-//                      } else {
-////                          base.goBackUrl("/", true);
-//                      }
 //                  }, function(){
 ////                      base.goBackUrl("/", true);
 //                  });

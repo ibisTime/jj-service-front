@@ -103,6 +103,60 @@ define([
 	        
 	    });
 	    
+	    Handlebars.registerHelper('formatFeeMode', function(num, options){
+	        if (num=='1') {
+	            return '基础服务费+提成';
+	        }else if (num=='2') {
+	            return '服务费';
+	        }else if (num=='3') {
+	            return '提成';
+	        }else{
+	        	return '';
+	        }
+	    });
+	    
+	    Handlebars.registerHelper('formatPayCycle', function(num, options){
+	        if (num=='1') {
+	            return '月付';
+	        }else if (num=='2') {
+	            return '季付';
+	        }else if (num=='3') {
+	            return '半年付';
+	        }else if (num=='4') {
+	            return '年付';
+	        }else{
+	        	return '';
+	        }
+	    });
+	    
+	    Handlebars.registerHelper('formaTgfw', function(tgfw, options){
+	        if (tgfw) {
+	        	var tmpl = tgfw.split(",");
+	        	var tmplData="";
+	        	tmpl.forEach(function(d, i){
+	        		if(d=="A"){
+	        			tmplData+="运营"+" "
+	        		}else if(d=="B"){
+	        			tmplData+="推广"+" "
+	        		}else if(d=="C"){
+	        			tmplData+="拍摄"+" "
+	        		}else if(d=="D"){
+	        			tmplData+="美工"+" "
+	        		}else if(d=="E"){
+	        			tmplData+="客服"+" "
+	        		}else if(d=="F"){
+	        			tmplData+="仓储"+" "
+	        		}else if(d=="G"){
+	        			tmplData+="打包发货"
+	        		}
+	        	});
+	        	
+	        	return tmplData;
+	        }else{
+	        	return '';
+	        }
+	    });
+	    
 	    $("#compContent").on("click","#btn-negotiate",function(){
 	    	var dCode=$(this).attr("data-code")
 	    	

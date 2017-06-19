@@ -148,7 +148,7 @@ a:hover {
 a.disabled {
     color: #bdbdbd !important;
 }
-input:disabled{
+input:disabled,textarea:disabled{
 	background-color: transparent;
 }
 

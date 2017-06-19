@@ -82,6 +82,9 @@
     background-color: #ffa11b;
     border-radius: 3px;
 }
+.captcha-btn:disabled{
+    background-color: #ccc;
+}
 .p-r {
     position: relative;
 }

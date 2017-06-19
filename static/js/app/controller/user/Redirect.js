@@ -71,7 +71,6 @@ define([
             }, () => {
             	
                 loading.hideLoading();
-            	base.showMsg("非常抱歉，微信授权失败");
             })
         
     }

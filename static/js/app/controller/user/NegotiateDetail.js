@@ -44,7 +44,8 @@ define([
             	$("#mobile").val(data.cbIntention.intMobile)
             	$("#datetime").val(base.formateDateTime(data.cbIntention.submitDatetime))
             	$("#status").val(base.getDictListValue(data.cbIntention.status,dictData))
-            	$("#hzContent").val(data.cbIntention.hzContent)
+            	$("#hzContent").val(data.cbIntention.hzContent);
+            	$("#remark").val(data.cbIntention.remark);
                 
             }, () => {});
     }
