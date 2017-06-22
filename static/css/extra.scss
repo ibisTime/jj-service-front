@@ -12,7 +12,7 @@
 
 .scroll-wrapper {
     @extend %scrollWrap;
-    top: 0.88rem;
+    top: 1.1rem;
 }
 
 
@@ -443,6 +443,19 @@
 .fs30 {
     font-size: 0.30rem;
 }
+.fs34 {
+    font-size: 0.34rem;
+}
+.fs36 {
+    font-size: 0.36rem;
+}
+.fs38 {
+    font-size: 0.38rem;
+}
+.fs40 {
+    font-size: 0.4rem;
+}
+
 
 .p20 {
     padding: 0.2rem;
@@ -535,6 +548,10 @@
     margin-top: 0.2rem;
 }
 
+.mt30 {
+    margin-top: 0.3rem;
+}
+
 .mt40 {
     margin-top: 0.4rem;
 }
@@ -555,6 +572,14 @@
     margin-left: 0.3rem;
 }
 
+.mr20 {
+    margin-right: 0.2rem;
+}
+.mr30 {
+    margin-right: 0.3rem;
+}
+
+
 .mt0_i {
     margin-top: 0 !important;
 }
@@ -571,9 +596,10 @@
 // index.html
 
 .index_top {
-    height: 0.88rem;
+    height: 1.1rem;
     padding: 0.14rem 0.3rem;
     background: #fff;
+    border-bottom: 1px solid #eee;
 
     .index_search {
         background: #f0f0f0;
@@ -581,20 +607,20 @@
         border-radius: 0.08rem;
 
         .search_icon {
-            width: 0.74rem;
+            width: 1rem;
             height: 100%;
             text-align: center;
 
             img {
                 width: 0.3rem;
                 height: 0.32rem;
-                margin-top: 0.14rem;
+                margin-top: 0.24rem;
             }
         }
 
         .search_input_item {
             margin-left: 0;
-            padding-right: 0.1rem;
+            padding-left: 0.3rem;
 
             input {
                 color: #999;
@@ -608,7 +634,7 @@
 
 .index_wrap {
     .banner {
-        height: 3.5rem;
+        height: 3.7rem;
     }
 
     .categary {
@@ -629,9 +655,8 @@
 
     .news_notice {
         height: 0.8rem;
-        line-height: 0.36rem;
-        padding: 0.22rem 0.3rem 0.22rem 0;
         background: #fff;
+        position: relative;
 
         .news_title {
             width: 1rem;
@@ -641,13 +666,30 @@
             font-weight: bold;
             border-right: 1px solid #f0f0f0;
             color: #000;
+            position: absolute;
+            top: 0.22rem;
+            left: 0;
         }
 
-        .news_content {
-            padding-left: 0.3rem;
+        .news_content{
+            width: 100%;
+            height: .3rem;
+            padding-left: 1.3rem;
             padding-right: 0.3rem;
             font-size: 0.24rem;
             color: #484848;
+            overflow: hidden;
+            position: relative;
+        }
+//      .notice{
+//          position: absolute;
+//          top: 0;
+//          left: 1.3rem;
+//          transition: .5s;
+//      }
+        .notice_1,.notice_2{
+            position: relative;
+            transition: .5s;
         }
     }
 
@@ -671,7 +713,6 @@
 
                 img {
                     width: 100%;
-                    height: 100%;
                 }
             }
 
@@ -1058,7 +1099,7 @@
 
 .user_wrap {
     .user_top_avatar {
-        height: 1.8rem;
+        height: 2rem;
         padding: 0.4rem 0.3rem;
         margin-bottom: 0.2rem;
         background: #fff;
@@ -1068,11 +1109,10 @@
             background-size: 0.15rem;
             color: #484848;
             font-size: 0.3rem;
-            line-height: 1rem;
 
             .user_avatar {
-                width: 1rem;
-                height: 1rem;
+                width: 1.2rem;
+                height: 1.2rem;
                 display: inline-block;
                 border-radius: 50%;
                 vertical-align: middle;
@@ -1093,7 +1133,7 @@
 }
 
 .search-wrapper{
-    top: .68rem;
+    top: 1.1rem;
 }
 .search-wrapper .index_wrap .index_content{
     margin-top: 0;
@@ -1161,10 +1201,25 @@
     top: 0;
     left: 0;
     overflow: hidden;
+    line-height: 1.3;
+    z-index: 999;
+    color: #484848;
+    font-size: .3rem;
 }
 .negForm-textarea{
     line-height: 1.5;
-    height: 2rem;
+    height: 1.8rem;
+    color: #484848;
+}
+.negForm-input{
+    font-size: .3rem;
+    color: #484848;
+    line-height: 1.3;
+    min-height: .3rem;
+}
+.negForm-input:disabled,
+.negForm-textarea:disabled{
+    color: #484848;
 }
 .negForm-textarea-detail{
     height: auto !important;
@@ -1233,9 +1288,27 @@
 }
 .am-modal-title{
     text-align: left;
-    padding: .2rem .3rem;
+    padding: .3rem .3rem .3rem;
     font-size: .28rem;
     
+}
+
+.addGrouping{
+    text-align: left;
+    padding: .25rem .3rem;
+    font-size: .28rem;
+    
+    
+    .add_icon {
+        display: inline-block;
+        width: 0.34rem;
+        height: 0.34rem;
+        float: left;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url("../images/add.png");
+        margin-right: .2rem;
+    }
 }
 
 .am-modal-body {
@@ -1285,4 +1358,98 @@
 .am-grouping ul li.am-radio i{
     width: .32rem;
     height: .32rem;
+}
+.am-input-wrap{
+    width: 100%;
+    padding: .3rem .3rem .1rem;
+    
+    .am-input-err{
+        width: 100%;
+        height: .4rem;
+        display: inline-block;
+        font-size: .26rem;
+        color: #F14E4F;
+        text-align: left;
+        line-height: 2;
+        padding: 0 .3rem;
+    }
+}
+.am-input-text{
+    width: 100%;
+    height: .8rem;
+    font-size: .3rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0 .3rem;
+}
+
+.notice_wrap{
+    margin: .2rem 0;
+    padding: 0 .3rem;
+    position: relative;
+}
+.notice_wrap .notice_icon{
+    width: 1rem;
+    position: absolute;
+    top: 0;
+    left: .3rem;   
+}
+.notice_con{
+    width: 100%;
+    padding-bottom: .3rem;
+    padding-left: 1.3rem;
+    line-height: 1.5;
+}
+.notice_title{
+    font-size: .32rem;
+}
+.notice_time{
+    font-size: .28rem;
+    margin: .15rem 0;
+}
+.notice_txt{
+    color: #999;
+    border-radius:4px;
+    line-height:1.8;
+    padding: .2rem .2rem;
+    background-color: #f5f5f5;
+}
+
+.imgWrap img{
+    vertical-align: bottom;
+}
+
+.addDialog .am-modal-wrap,
+.addDialog .am-modal-mask{
+    z-index: 9999;
+}
+.telephone-wrap{
+    width: 100%;
+    position: fixed;
+    bottom: -2rem;
+    left: 0;
+}
+
+.default-caseList{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 49% 39%;
+    background-size: 1.9rem;
+    background-image: url(../images/noneCase.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+#telephone .tel_icon{
+    display: inline-block;
+    width: 0.44rem;
+    height: 0.44rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url("../images/telephone.png");
+    margin-right: .2rem;
+    position: relative;
+    top: .05rem;
 }

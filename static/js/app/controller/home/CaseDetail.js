@@ -60,7 +60,7 @@ define([
     function getCaseDetail(){
         return serviceCtr.getCaseDetail(pageCode,code)
             .then((data) => {
-            	qfType = data.qualifyType;
+            	qfType = data.qualifyCode;
                 var bannerHtml = "";
                 var pics = base.getPicArr(data.pic);
                 pics.forEach((pic) => {
@@ -74,14 +74,29 @@ define([
                 
                 if(qfType=="2"){//摄影
 					var works = base.getPic(data.works);
-					otherTmpl = `<div class="normal_title">代表作品</div><div class='wp100'><img class='wp100' src='${works}'></div>`
+					otherTmpl = `<div class="normal_title">代表作品</div><div class='wp100 plr30'><img class='wp100' src='${works}'></div>`
 					
-//				}else if(qfType=="1"){//培训
-//					var resume1 = base.getPic(data.resume1);
-//					var resume2 = base.getPic(data.resume2);
-//					var resume3 = base.getPic(data.resume3);
-//					
-//					otherTmpl = `<div class="normal_title">代表作品</div><div class='wp100'><img class='wp100' src='${resume1}'/></div><div class='wp100'><img class='wp100' src='${resume2}'/></div><div class='wp100'><img class='wp100' src='${resume3}'/></div>`
+				}else if(qfType=="1"){//培训
+					var resume1 = base.getPicArr(data.resume1);
+					var resume2 = base.getPicArr(data.resume2);
+					var resume3 = base.getPicArr(data.resume3);
+					
+					otherTmpl = `<div class="normal_title">核心讲师</div>`
+					
+	                resume1.forEach((pic) => {
+	                    otherTmpl += `<div class='wp100'><img class='wp100 plr30' src='${pic}'/></div>`;
+	                });
+	                resume2.forEach((pic) => {
+	                    otherTmpl += `<div class='wp100'><img class='wp100 plr30' src='${pic}'/></div>`;
+	                });
+	                resume3.forEach((pic) => {
+	                    otherTmpl += `<div class='wp100'><img class='wp100 plr30' src='${pic}'/></div>`;
+	                });
+					
+				}else if(qfType=="4"){
+					var sucCase = base.getPic(data.sucCase);
+					otherTmpl = `<div class="normal_title">成功案例</div><div class='wp100 plr30'><img class='wp100' src='${sucCase}'></div>`;
+					
 				}
 				
 				companyCode = data.companyCode;

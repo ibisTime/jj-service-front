@@ -3,9 +3,10 @@ define([
     'app/module/foot',
     'app/module/scroll',
     'app/interface/userCtr',
+    'app/interface/serviceCtr',
     'app/interface/generalCtr',
     'app/module/judgeBindMobile/judgeBindMobile',
-], function(base, Foot, scroll, userCtr, generalCtr,JudgeBindMobile) {
+], function(base, Foot, scroll, userCtr, serviceCtr, generalCtr,JudgeBindMobile) {
     var myScroll;
 
     init();
@@ -39,19 +40,30 @@ define([
         return userCtr.getUserInfo(refresh)
             .then(function(data) {
                 $("#nickname").html(data.nickname);
+                $("#mobile").html(data.mobile?data.mobile:"请绑定手机号");
                 $("#avatar").attr("src", base.getAvatar(data.userExt?data.userExt.photo:""));
                 myScroll.refresh();
             }, () => myScroll.refresh());
     }
     // 获取意向数
     function getIntentionAmount(){
-
+		return serviceCtr.getNegotiateList({
+				start:1,
+				limit:1,
+			}).then((data) => {
+	       		$(".myNegNum").html("("+data.totalCount+")")
+	       })
     }
     // 获取服务电话
     function getTel() {
-        // return generalCtr.getSysConfig("telephone")
-        // .then((data) => {
-        // })
+       	generalCtr.getSysConfig("sysMobile")
+       	.then((data) => {
+       		$("#telephone").html('<i class="tel_icon"></i><a href="tel://'+data.note+'">'+data.note+'</a>')
+       })
+       	generalCtr.getSysConfig("serviceTime")
+       	.then((data) => {
+       		$("#serviceTime").html("服务时间："+data.note)
+       })
     }
     // 初始化iscroll
     function initIScroll() {

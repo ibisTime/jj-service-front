@@ -16,7 +16,7 @@ define([
     init();
     // 初始化页面
     function init() {
-        Foot.addFoot(0);
+        Foot.addFoot(3);
         initIScroll();
         base.showLoading();
 		getDictList()

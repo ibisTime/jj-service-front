@@ -7,7 +7,7 @@ define([
         getPageNews: (params, refresh) => {
             params.orderColumn = params.orderColumn || "update_datetime";
             params.orderDir = params.orderDir || "desc";
-            params.type = 1;
+            params.type = 2;
             params.status = 1;
             return Ajax.get('612005', params, refresh)
         },

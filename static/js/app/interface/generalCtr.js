@@ -22,6 +22,7 @@ define([
             params.orderColumn = "topush_datetime";
             params.orderDir = "desc";
             params.pushType = 41;
+            params.status = 1;
             return Ajax.get("804040", params, refresh);
         },
         // 获取数据字典

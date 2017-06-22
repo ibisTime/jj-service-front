@@ -34,12 +34,13 @@ define([
         if(pic){
             pic = pic.split(/\|\|/)[0];
         }
-        return pic ? (PIC_PREFIX + pic + THUMBNAIL_SUFFIX) :
+        return pic ? (PIC_PREFIX + pic) :
             (isAvatar && !isAvatar.name) ? defaultAvatar : "";
     });
     Handlebars.registerHelper('formatListImage', function(pic, options){
+    	var defaultImg = __inline("../images/default.jpg");
         if(!pic)
-            return "";
+            return defaultImg;
         pic = pic.split(/\|\|/)[0];
         return (PIC_PREFIX + pic + '?imageMogr2/auto-orient/thumbnail/!123x100r');
     });

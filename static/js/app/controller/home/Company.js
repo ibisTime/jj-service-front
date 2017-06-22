@@ -57,10 +57,11 @@ define([
     function getCompany(){
         return serviceCtr.getCompany(companyCode)
             .then((data) => {
-            	qfType = data.qualifyType;
+            	qfType = data.qualifyCode;
                 var bannerHtml = "";
-                var pics = base.getPicArr(data.pic);
-                pics.forEach((pic) => {
+    			var defaultImg = __inline("../images/default.jpg");
+                var advPics = base.getPicArr(data.advPic?data.advPic:defaultImg);
+                advPics.forEach((pic) => {
                     bannerHtml += `<div class='swiper-slide'><img class='wp100' src='${pic}'></div>`;
                 });
                 $("#swiper .swiper-wrapper").html(bannerHtml);
@@ -74,10 +75,20 @@ define([
                     companyHtml
                         .find("am-button").find("span").text("关注");
                 }
+                
+                var picsHtml ="";
+                var pics = base.getPicArr(data.pic);
+                pics.forEach((pic) => {
+                    picsHtml += `<div class='wp100 imgWrap'><img class='wp100' src='${pic}'></div>`;
+                });
+                
                 $("#compContent").html(companyHtml);
-                $("#description").html(data.description);
+                $("#description .txt").html(data.description);
+                $("#description .img").html(picsHtml);
+
             }, () => {});
     }
+    
     function addListener() {
         // 关注
         $("#compContent").on("click", ".am-button", function(){
@@ -110,38 +121,87 @@ define([
         })
         
         //分组弹窗-取消
-        $("#cancel").click(function(){
+        $("#choseDialog #cancel").click(function(){
         	$("#choseDialog").addClass("hidden");
         	$("#grouping ul").empty()
         })
         
         //分组弹窗-确认
-        $("#confirm").click(function(){
+        $("#choseDialog #confirm").click(function(){
             var focusCode = $("#compContent .am-button").attr("data-code");
-            
-        	base.showLoading();
         	
-            serviceCtr.attentionComp({
-                companyCode: companyCode,
-                groupCode: $(".am-radio-active").attr("data-code")
-            }, true).then((data) => {
-            	
-                $("#compContent .am-button").attr("data-code", data.code).find("span").text("取消关注");
-                
-                base.hideLoading();
-                $("#choseDialog").addClass("hidden");
-    			$("#grouping ul").empty();
-            }, () => {});
+        	if($(".am-radio-active").attr("data-code")){
+        		base.showLoading();
+        		serviceCtr.attentionComp({
+	                companyCode: companyCode,
+	                groupCode: $(".am-radio-active").attr("data-code")
+	            }, true).then((data) => {
+	            	
+	                $("#compContent .am-button").attr("data-code", data.code).find("span").text("取消关注");
+	                
+	                base.hideLoading();
+	                $("#choseDialog").addClass("hidden");
+	    			$("#grouping ul").empty();
+	            }, () => {});
+        	}else{
+        		base.showMsg("请选择分组")
+        	}
+            
+        	
+        })
+        
+        //新建分组显示
+        $("#choseDialog #btn-addGrouping").click(function(){
+        	$("#addGrouping-input").val("")
+        	$("#addDialog").removeClass("hidden");
+        })
+        
+        //新建分组-取消
+        $("#addDialog #cancel").click(function(){
+        	$("#addDialog").addClass("hidden");
+        })
+        
+        //新建分组-确认
+        $("#addDialog #confirm").click(function(){
+        	
+        	var val = $("#addGrouping-input").val();
+        	if(!val&&val==""){
+        		
+        		$("#addDialog .am-input-err").html("分组名不能为空")
+        		
+        	}else{
+        		base.showLoading();
+        		serviceCtr.addGrouping(val, true)
+	            .then((data) => {
+	        		base.hideLoading();
+	        		$("#grouping ul li").removeClass("am-radio-active");
+	        		
+	        		var html = '<li class="am-radio am-radio-active" data-code="'+data.code+'"><p class="fl">'+val+'</p><i class="fr"></i></li>'
+	        		$("#grouping ul").prepend(html);
+	        		
+	        		$("#addDialog").addClass("hidden");
+	        		
+        		}, () => {});
+        		
+        	}
+        	
+        })
+        
+        $("#addGrouping-input").focus(function(){
+        	$("#addDialog .am-input-err").html("&nbsp;")
         	
         })
         
         //显示地址
         $("#compContent").on("click", ".comp_top_dw", function(){
             var me = $(this);
-            showInMap.addMap({
-                lng: me.attr("data-lng"),
-                lat: me.attr("data-lat")
-            }).showMap();
+            if(me.attr("data-lng")&&me.attr("data-lat")){
+            	
+	            showInMap.addMap({
+	                lng: me.attr("data-lng"),
+	                lat: me.attr("data-lat")
+	            }).showMap();
+            }
         });
         // 经典案例
         $("#jdal").on("click", function(){

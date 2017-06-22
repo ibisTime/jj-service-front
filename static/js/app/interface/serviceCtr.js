@@ -7,7 +7,7 @@ define([
         getPageCompany: (params, refresh) => {
             params.orderColumn = params.orderColumn || "gz_num";
             params.orderDir = params.orderDir || "desc";
-            params.gsQuantitys ="1,2,4";
+            params.qualifyCode ="1,2,4";
             params.status ="2";
             
             return Ajax.get('612060', params, refresh)
@@ -64,8 +64,11 @@ define([
             }, refresh)
         ),
         // 新建分组
-        addGrouping: (params, refresh) =>  {
-        	params.userId = base.getUserId();
+        addGrouping: (name, refresh) =>  {
+        	var params = {
+        		name,
+        		userId: base.getUserId()
+        	}
         	
             return Ajax.get("612020", params, refresh)
         },

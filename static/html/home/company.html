@@ -19,17 +19,45 @@
         </div>
 
         <div class="normal_title">图文详情</div>
-        <div id="description" class="p30 bg_fff"></div>
+        <div id="description" class="p30 bg_fff"><div class="txt fs28 lh180"></div><div class="img pt20"></div></div>
         
         <div class="detail-chose-dialog hidden" id="choseDialog">
 	        <div class="am-modal-mask"></div>
 	        <div class="am-modal-wrap">
 	            <div role="document" class="am-modal am-modal-operation am-modal-transparent">
 	                <div class="am-modal-content">
-	                	<div class="am-modal-head"><div class="am-modal-title">选择分组</div></div>
+	                	<div class="am-modal-head">
+	                		<div class="am-modal-title b_e_b">选择分组</div>
+	                		<div class="addGrouping" id="btn-addGrouping"><i class="add_icon"></i><div>新建分组</div></div>
+	                	</div>
 	                    <div class="am-modal-body">
 	                    	<div class="am-grouping" id="grouping">
 	                    		<ul></ul>
+	                    	</div>
+	                    </div>
+	                    <div class="am-modal-footer">
+	                        <div class="am-modal-button-group-v">
+	                            <div class="am-modal-button am-modal-button-co" id="confirm" >确认</div>
+	                            <div class="am-modal-button am-modal-button-ca" id="cancel">取消</div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="detail-chose-dialog hidden addDialog" id="addDialog">
+	        <div class="am-modal-mask"></div>
+	        <div class="am-modal-wrap">
+	            <div role="document" class="am-modal am-modal-operation am-modal-transparent">
+	                <div class="am-modal-content">
+	                	<div class="am-modal-head">
+	                		<div class="am-modal-title">新建分组</div>
+	                	</div>
+	                    <div class="am-modal-body">
+	                    	<div class="am-input-wrap">
+	                    		<input class="am-input-text" id="addGrouping-input" type="text" placeholder="请输入分组名" />
+	                    		<label class="am-input-err">&nbsp;</label>
 	                    	</div>
 	                    </div>
 	                    <div class="am-modal-footer">

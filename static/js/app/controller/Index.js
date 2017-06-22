@@ -13,7 +13,9 @@ define([
     var config = {
         start: 1,
         limit: 10,
-        location: 1
+        location: 1,
+        orderColumn:'order_no',
+        orderDir:'Asc'
     };
 
     init();
@@ -109,10 +111,61 @@ define([
     function getNotice(){
         generalCtr.getPageNotice({
             start: 1,
-            limit: 1
+            limit: 10,
         }, true).then((data) => {
             if(data.list.length){
-                $("#notice").html(`<div class="news_title">公告</div><div class="news_content t-3dot"><a href="#">${data.list[0].smsContent}</a></div>`);
+            	var html = ""
+            	data.list.forEach(function(d, i){
+            		html+=`<p>${d.smsTitle}</p>`;
+            	})
+                $("#notice .notice_1").html(html);
+                
+				var notice = $('.notice')[0];
+                var notice_1 = $('.notice_1')[0];
+                var notice_2 = $('.notice_2')[0];
+                var oneHeight= $('.notice_1 p').height();
+                var delay=2000;
+                var speed=50;
+                var timer = null;
+                notice.scrollTop = 0;
+                
+                // 克隆
+                if(data.list.length>1){
+                	notice_1.innerHTML += notice_1.innerHTML;
+//              	function myScroll() {
+//	                    if (notice.scrollTop >= notice_1.scrollHeight) {
+//	                        notice.scrollTop = 0;
+//	                    } else {
+//	                        notice.scrollTop += 2;
+//	                    }
+//	                }
+//	                var time = 500;
+//	                
+//	                setInterval(function(){
+//	                	setInterval(myScroll, time);
+//	                },1500)
+
+					function startScroll(){//开始运动
+					     timer=setInterval(scrollUp,speed);
+					     notice.scrollTop++;
+					    }
+					function scrollUp(){//循环运动
+					    if(notice.scrollTop%oneHeight==0){
+					        clearInterval(timer)
+					        setTimeout(startScroll,delay);
+					        }else{
+					            notice.scrollTop++;
+					             if(notice.scrollTop >= notice.scrollHeight/2){
+					                 notice.scrollTop =0;
+					                 }
+					            }
+					    }
+				    //页面加载两秒后运动
+				     setTimeout(startScroll,delay)
+	                
+                }
+                
+                
             }else{
                 $("#notice").hide();
             }
@@ -137,6 +190,13 @@ define([
             }
         });
 
-
+		$("#notice").click(function(){
+			location.href="home/notice.html"
+		})
+		
+		
+		$(".index_search .search_icon").click(function(){
+			location.href = "./home/list.html?s="+$(".index_search .search_input_item input").val();
+		})
     }
 });

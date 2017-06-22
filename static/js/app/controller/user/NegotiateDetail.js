@@ -17,7 +17,6 @@ define([
     
     // 初始化页面
     function init() {
-        Foot.addFoot(0);
         base.showLoading();
         getDictList();
         addListener();
@@ -41,11 +40,11 @@ define([
             	
 	        	getUserIdDetail(data.cbIntention.submitter,true),
 	        	getCompany(data.cbIntention.companyCode,true),
-            	$("#mobile").val(data.cbIntention.intMobile)
-            	$("#datetime").val(base.formateDateTime(data.cbIntention.submitDatetime))
-            	$("#status").val(base.getDictListValue(data.cbIntention.status,dictData))
-            	$("#hzContent").val(data.cbIntention.hzContent);
-            	$("#remark").val(data.cbIntention.remark);
+            	$("#mobile").html(data.cbIntention.intMobile)
+            	$("#datetime").html(base.formateDateTime(data.cbIntention.submitDatetime))
+            	$("#status").html(base.getDictListValue(data.cbIntention.status,dictData))
+            	$("#hzContent").html(data.cbIntention.hzContent);
+            	$("#remark").html(data.cbIntention.remark);
                 
             }, () => {});
     }
@@ -68,7 +67,7 @@ define([
     function getUserIdDetail(userId,refresh) {
         return userCtr.getUserIdDetail(userId,refresh)
             .then(function(data) {
-            	$("#name").val(data.nickname);
+            	$("#name").html(data.nickname);
             }, () => {});
     }
     

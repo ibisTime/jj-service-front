@@ -46,5 +46,8 @@ define([
     }
     function addListener() {
         
+		$(".index_search .search_icon").click(function(){
+			location.href = "../home/list.html?s="+$(".index_search .search_input_item input").val();
+		})
     }
 });

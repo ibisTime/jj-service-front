@@ -41,8 +41,6 @@ define([
                     var redirect_uri = base.getDomain() + "/user/redirect.html";
                     location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid +
                         "&redirect_uri=" + redirect_uri + "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
-                } else {
-                    base.showMsg("非常抱歉，微信参数获取失败");
                 }
                     
             },() => {});

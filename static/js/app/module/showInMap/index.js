@@ -44,7 +44,7 @@ define([
             if(this.hasMap()){
                 var mapCont = $("#J_OnePointMapWrapper");
                 // mapCont.fadeIn(100);
-                mapCont.css("top", $(window).scrollTop()+"px");
+//              mapCont.css("top", $(window).scrollTop()+"px");
                 mapCont.show().animate({
                     left: 0
                 }, 200);
